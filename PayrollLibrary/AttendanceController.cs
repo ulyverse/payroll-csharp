@@ -1,14 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 
 namespace PayrollLibrary
 {
     public class AttendanceController
     {
+        public TimeSpan GetTotalNormalWorkingHours(List<Attendance> attendances)
+        {
+            var timeSpan = new TimeSpan();
+            foreach (var attendance in attendances)
+            {
+                if (!attendance.Enabled)
+                    continue;
+                timeSpan += attendance.NormalWorkingHours;
+            }
+            return timeSpan;
+        }
+
+        public TimeSpan GetTotalOverTime(List<Attendance> attendances)
+        {
+            var timeSpan = new TimeSpan();
+            foreach (var attendance in attendances)
+            {
+                if (!attendance.Enabled)
+                    continue;
+                timeSpan += attendance.OverTime;
+            }
+            return timeSpan;
+        }
+
         public TimeSpan ParseTime(string text)
         {
             return DateTime.ParseExact(text, "hh:mm tt", CultureInfo.InvariantCulture).TimeOfDay;
@@ -31,6 +50,11 @@ namespace PayrollLibrary
         public TimeSpan GetTotalHours(TimeSpan morningTotalHours, TimeSpan afternooonTotalHours)
         {
             return morningTotalHours + afternooonTotalHours;
+        }
+
+        public double GetGrossPay(Employee employee, TimeSpan normalWorkingHours, TimeSpan overtimeHours, double overtimeMultiplier = 1)
+        {
+            return GetGrossPay(normalWorkingHours.TotalHours, overtimeHours.TotalHours, overtimeMultiplier, employee.Salary);
         }
 
         public double GetGrossPay(double totalHours, double overtimeHours, double overtimeMultiplier, double ratePerHour)

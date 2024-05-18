@@ -1,0 +1,142 @@
+﻿using PayrollLibrary;
+
+namespace WinFormGUI
+{
+    public partial class AttendanceForm : Form
+    {
+        private Employee _employee;
+        private AttendanceController _attendanceController = new AttendanceController();
+        public AttendanceForm(Employee employee)
+        {
+            InitializeComponent();
+            _employee = employee;
+        }
+
+        private void AttendanceForm_Load(object sender, EventArgs e)
+        {
+            lblEmployeeName.Text = $"{_employee.FirstName} {_employee.LastName}".ToUpper();
+            lblRate.Text = $"Rate: {_employee.Salary}";
+            ConfigureScrollBar();
+            InitializeAttendanceForm();
+        }
+
+        private void InitializeAttendanceForm()
+        {
+            CreateAttendanceSheetForm();
+        }
+
+        private void CreateAttendanceSheetForm()
+        {
+            bool alternate = true;
+            foreach (var attendance in _employee.Attendances)
+            {
+                var panel = new FlowLayoutPanel();
+                panel.FlowDirection = FlowDirection.LeftToRight;
+                panel.Parent = pnlAttendance;
+                panel.AutoSize = true;
+                //panel.Dock = DockStyle.Fill;
+                //panel.Margin = Padding.Empty;
+
+
+                if (!alternate)
+                    panel.BackColor = Color.LightGray;
+
+                alternate = !alternate;
+
+                var lblDate = CreateDateLabel(attendance.DateName);
+                lblDate.Parent = panel;
+
+                var chkEnabled = CreateCheckBox(attendance);
+                chkEnabled.Parent = panel;
+
+                for (int i = 0; i < 6; i++)
+                {
+                    var timePicker = CreateTimeSpanPicker();
+
+                    timePicker.Parent = panel;
+                    timePicker.DataBindings.Add("Enabled", chkEnabled, "Checked");
+                    var strProperty = i % 2 == 0 ? "TimeIn" : "TimeOut";
+                    BindTimePickerToTimeBlock(timePicker, attendance.TimeBlocks[i / 2], strProperty);
+                }
+            }
+        }
+
+        public void BindTimePickerToTimeBlock(DateTimePicker timePicker, TimeBlock timeBlock, string property)
+        {
+            Binding timeBinding = new Binding("Value", timeBlock, property, true, DataSourceUpdateMode.OnPropertyChanged);
+            timeBinding.Format += TimeBinding_Format;
+            timeBinding.Parse += TimeBinding_Parse;
+
+            timePicker.DataBindings.Add(timeBinding);
+        }
+
+        private void ConfigureScrollBar()
+        {
+            pnlAttendance.AutoScroll = false;
+            pnlAttendance.HorizontalScroll.Enabled = false;
+            pnlAttendance.HorizontalScroll.Visible = false;
+            pnlAttendance.HorizontalScroll.Maximum = 0;
+            pnlAttendance.AutoScroll = true;
+        }
+
+        public CheckBox CreateCheckBox(Attendance attendance)
+        {
+            CheckBox chkEnabled = new CheckBox();
+            chkEnabled.Font = new Font("Segoe UI", 9);
+            chkEnabled.Text = "In";
+            chkEnabled.Width = 38;
+            chkEnabled.Dock = DockStyle.Fill;
+            chkEnabled.TextAlign = ContentAlignment.MiddleCenter;
+            chkEnabled.DataBindings.Add("Checked", attendance, "Enabled", true, DataSourceUpdateMode.OnPropertyChanged);
+            return chkEnabled;
+        }
+
+        public Label CreateDateLabel(string text)
+        {
+            Label lblDate = new Label();
+            lblDate.Font = new Font("Consolas", 14.5f, FontStyle.Regular);
+            lblDate.Text = text;
+            lblDate.AutoSize = true;
+            lblDate.Dock = DockStyle.Fill;
+            lblDate.TextAlign = ContentAlignment.MiddleCenter;
+            return lblDate;
+        }
+
+
+        private DateTimePicker CreateTimeSpanPicker()
+        {
+            var dateTimePicker = new DateTimePicker();
+            dateTimePicker.Format = DateTimePickerFormat.Custom;
+            dateTimePicker.CustomFormat = "hh:mm tt";
+            dateTimePicker.ShowUpDown = true;
+            dateTimePicker.Size = new Size(120, 30);
+            dateTimePicker.Font = new Font("Verdana", 14, FontStyle.Regular);
+            dateTimePicker.Value = new DateTime(2015, 5, 10, 8, 0, 0);
+            dateTimePicker.Margin = new Padding(5, 0, 5, 0);
+            return dateTimePicker;
+        }
+        private void TimeBinding_Format(object sender, ConvertEventArgs e)
+        {
+            if (e.DesiredType != typeof(DateTime) || !(e.Value is TimeOnly timeOnly)) return;
+
+            e.Value = DateTime.Today.Add(timeOnly.ToTimeSpan());
+        }
+        private void TimeBinding_Parse(object sender, ConvertEventArgs e)
+        {
+            if (e.DesiredType != typeof(TimeOnly) || !(e.Value is DateTime dateTime)) return;
+
+            e.Value = TimeOnly.FromDateTime(dateTime);
+        }
+        private void CalculatePay(object sender, EventArgs e)
+        {
+            var normalWorkingHours = _attendanceController.GetTotalNormalWorkingHours(_employee.Attendances);
+            var overtime = _attendanceController.GetTotalOverTime(_employee.Attendances);
+
+            var gross = _attendanceController.GetGrossPay(_employee, normalWorkingHours, overtime, 1);
+
+            lblNormalWorkingHours.Text = $"Normal Working Hours: {normalWorkingHours.Days} days {normalWorkingHours.Hours:00}:{normalWorkingHours.Minutes:00}:{normalWorkingHours.Seconds:00}";
+            lblOvertime.Text = $"Overtime: {overtime.Days} days {overtime.Hours:00}:{overtime.Minutes:00}:{overtime.Seconds:00}";
+            lblGrossPay.Text = $"Gross Pay: {gross}";
+        }
+    }
+}

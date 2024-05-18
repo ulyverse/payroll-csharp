@@ -1,5 +1,3 @@
-using Payroll_System_Tentative;
-
 namespace WinFormGUI
 {
     internal static class Program
@@ -11,7 +9,9 @@ namespace WinFormGUI
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new Panel_Test());
+            Application.Run(new CreatePayrollForm());
         }
+
+
     }
 }

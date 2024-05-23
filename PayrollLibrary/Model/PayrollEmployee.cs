@@ -1,4 +1,4 @@
-﻿namespace PayrollLibrary
+﻿namespace PayrollLibrary.Model
 {
     public class PayrollEmployee
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace PayrollLibrary
+namespace PayrollLibrary.Model
 {
     public class Attendance : INotifyPropertyChanged
     {
@@ -47,9 +47,10 @@ namespace PayrollLibrary
         public TimeSpan GetOverTimeHours()
         {
             var time = TimeBlocks[2];
-            if (time.TimeOut.IsBetween(new TimeOnly(18, 00), new TimeOnly(4, 00)))
+            if (time.TimeOut.IsBetween(new TimeOnly(0, 0), new TimeOnly(8, 01))
+                || time.TimeOut > time.TimeIn)
                 return time.TimeOut - time.TimeIn;
-            return new TimeSpan();
+            return TimeSpan.Zero;
         }
 
         public override string ToString()

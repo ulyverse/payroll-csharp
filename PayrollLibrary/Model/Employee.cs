@@ -1,4 +1,4 @@
-﻿namespace PayrollLibrary
+﻿namespace PayrollLibrary.Model
 {
     public class Employee
     {
@@ -7,11 +7,11 @@
         public int RoleID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string FullName => $"{FirstName} {LastName}";
         public DateOnly Birthdate { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public decimal Salary { get; set; }
-        public decimal CashAdvance { get; set; }
         public decimal Balance { get; set; }
         public decimal SSS { get; set; }
         public decimal PagIbig { get; set; }

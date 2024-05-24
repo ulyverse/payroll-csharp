@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PayrollLibrary.Data_Access
 {
-    public class PayrollDataAccess : SqliteDataAccess<Payroll>
+    public class DepartmentData : SqliteDataAccess<Department>
     {
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PayrollLibrary.Data_Access;
 
-public class EmployeeDataAccess : SqliteDataAccess<Employee>
+public class EmployeeData : SqliteDataAccess<Employee>
 {
     public static Employee? Login(string username, string password)
     {

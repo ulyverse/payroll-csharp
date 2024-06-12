@@ -5,10 +5,12 @@
         private TimeOnly _timeIn;
         private TimeOnly _timeOut;
 
-        public TimeBlock(int startingHour = 8, int startingMinutes = 0)
+        public TimeBlock(int startingHour = 8, int startingMinutes = 0, int endingHour = -1, int endingMinutes = 0)
         {
+            if (endingHour == -1)
+                endingHour = startingHour;
             TimeIn = new TimeOnly(startingHour, startingMinutes);
-            TimeOut = new TimeOnly(startingHour, startingMinutes);
+            TimeOut = new TimeOnly(endingHour, endingMinutes);
         }
 
         public TimeOnly TimeIn

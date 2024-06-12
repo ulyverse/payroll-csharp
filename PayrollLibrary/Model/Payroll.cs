@@ -6,5 +6,7 @@
         public DateOnly StartDate { get; set; }
         public DateOnly EndDate { get; set; }
         public bool DetailedDeduction { get; set; }
+        [ExcludeProperty]
+        public List<PayrollEmployee> PayrollEmployees { get; set; }
     }
 }

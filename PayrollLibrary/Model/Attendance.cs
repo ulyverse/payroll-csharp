@@ -7,14 +7,15 @@ namespace PayrollLibrary.Model
         public Attendance(DateOnly date)
         {
             Date = date;
-            TimeBlocks[0] = new TimeBlock(8, 0);
-            TimeBlocks[1] = new TimeBlock(13, 0);
-            TimeBlocks[2] = new TimeBlock(19, 0);
+            TimeBlocks[0] = new TimeBlock(8, 0, 12, 0);
+            TimeBlocks[1] = new TimeBlock(13, 0, 17, 0);
+            TimeBlocks[2] = new TimeBlock(19, 0, 19, 0);
 
             foreach (var block in TimeBlocks)
             {
                 block.PropertyChanged += UpdateTotalHoursSpent;
             }
+            UpdateTotalHoursSpent();
         }
 
         private DateOnly Date;

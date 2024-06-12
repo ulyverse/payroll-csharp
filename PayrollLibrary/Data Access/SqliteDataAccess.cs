@@ -108,7 +108,7 @@ public class SqliteDataAccess<T>
         }
     }
 
-    public static T? GetById(int id)
+    public static T? FindById(int id)
     {
         string table = GetTableName();
         using (IDbConnection connection = new SqliteConnection(LoadConnectionString()))

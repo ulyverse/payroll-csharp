@@ -1,10 +1,11 @@
 ﻿using PayrollLibrary;
+using PayrollLibrary.Model;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace WinFormGUI
 {
     public partial class CreatePayrollForm : Form
     {
-        private Employee employee;
         public CreatePayrollForm()
         {
             InitializeComponent();
@@ -12,36 +13,39 @@ namespace WinFormGUI
 
         private void CreatePayrollForm_Load(object sender, EventArgs e)
         {
-            employee = new Employee() { FirstName = "Cardo", LastName = "Dalisay", Salary = 50 };
-
+            dateStartDate.Value = DateTime.Now.AddDays(-6);
         }
 
-        private List<Attendance> GetAttendances()
+        private void btnCreatePayroll_Click(object sender, EventArgs e)
         {
-            List<Attendance> attendances = new List<Attendance>();
-
-            DateOnly startDate = DateOnly.FromDateTime(dateStartDate.Value);
-            DateOnly endDate = DateOnly.FromDateTime(dateStopDate.Value);
-
-            var diff = endDate.DayNumber - startDate.DayNumber;
-
-            if (diff < 0)
-                throw new Exception("Start date must not be bigger than end date");
-
-            var currentDay = startDate;
-
-            for (int i = 1; i <= diff + 1; i++)
+            var startDate = DateOnly.FromDateTime(dateStartDate.Value);
+            var endDate = DateOnly.FromDateTime(dateEndDate.Value);
+            if (endDate.CompareTo(startDate) == -1)
             {
-                attendances.Add(new Attendance(currentDay));
-                currentDay = currentDay.AddDays(1);
+                MessageBoxPrompt.ShowInfo("Start date cannot be later than End date");
             }
-            return attendances;
-        }
+            else
+            {
+                Payroll payroll = new Payroll()
+                {
+                    StartDate = startDate,
+                    EndDate = endDate,
+                    DetailedDeduction = checkDetailedDeduction.Checked
+                };
 
-        private void btnDemo_Click(object sender, EventArgs e)
-        {
-            employee.Attendances = GetAttendances();
-            new AttendanceForm(employee).ShowDialog();
+                this.Hide();
+                DialogResult result = new PayrollForm(payroll).ShowDialog();
+
+                if (result == DialogResult.OK || result == DialogResult.Yes)
+                {
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+                else
+                {
+                    this.Show();
+                }
+            }
         }
     }
 }

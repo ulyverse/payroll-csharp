@@ -29,68 +29,90 @@
         private void InitializeComponent()
         {
             dateStartDate = new DateTimePicker();
-            dateStopDate = new DateTimePicker();
+            dateEndDate = new DateTimePicker();
             lblStartDate = new Label();
             lblStopDate = new Label();
-            btnDemo = new Button();
+            btnCreatePayroll = new Button();
+            checkDetailedDeduction = new CheckBox();
             SuspendLayout();
+            // 
+            // dateEndDate
+            // 
+            dateEndDate.Format = DateTimePickerFormat.Short;
+            dateEndDate.Location = new Point(269, 117);
+            dateEndDate.Margin = new Padding(4);
+            dateEndDate.Name = "dateEndDate";
+            dateEndDate.Size = new Size(145, 27);
+            dateEndDate.TabIndex = 1;
             // 
             // dateStartDate
             // 
             dateStartDate.Format = DateTimePickerFormat.Short;
-            dateStartDate.Location = new Point(62, 116);
+            dateStartDate.Location = new Point(71, 117);
+            dateStartDate.Margin = new Padding(4);
             dateStartDate.Name = "dateStartDate";
-            dateStartDate.Size = new Size(103, 23);
+            dateStartDate.Size = new Size(145, 27);
             dateStartDate.TabIndex = 0;
-            // 
-            // dateStopDate
-            // 
-            dateStopDate.Format = DateTimePickerFormat.Short;
-            dateStopDate.Location = new Point(205, 116);
-            dateStopDate.Name = "dateStopDate";
-            dateStopDate.Size = new Size(103, 23);
-            dateStopDate.TabIndex = 1;
+
             // 
             // lblStartDate
             // 
             lblStartDate.AutoSize = true;
-            lblStartDate.Location = new Point(63, 84);
+            lblStartDate.Location = new Point(72, 79);
+            lblStartDate.Margin = new Padding(4, 0, 4, 0);
             lblStartDate.Name = "lblStartDate";
-            lblStartDate.Size = new Size(61, 15);
+            lblStartDate.Size = new Size(100, 18);
             lblStartDate.TabIndex = 2;
             lblStartDate.Text = "Start Date:";
             // 
             // lblStopDate
             // 
             lblStopDate.AutoSize = true;
-            lblStopDate.Location = new Point(205, 84);
+            lblStopDate.Location = new Point(269, 79);
+            lblStopDate.Margin = new Padding(4, 0, 4, 0);
             lblStopDate.Name = "lblStopDate";
-            lblStopDate.Size = new Size(57, 15);
+            lblStopDate.Size = new Size(90, 18);
             lblStopDate.TabIndex = 3;
             lblStopDate.Text = "End Date:";
             // 
-            // btnDemo
+            // btnCreatePayroll
             // 
-            btnDemo.Location = new Point(62, 163);
-            btnDemo.Name = "btnDemo";
-            btnDemo.Size = new Size(245, 40);
-            btnDemo.TabIndex = 4;
-            btnDemo.Text = "Demo";
-            btnDemo.UseVisualStyleBackColor = true;
-            btnDemo.Click += btnDemo_Click;
+            btnCreatePayroll.Location = new Point(72, 213);
+            btnCreatePayroll.Margin = new Padding(4);
+            btnCreatePayroll.Name = "btnCreatePayroll";
+            btnCreatePayroll.Size = new Size(342, 48);
+            btnCreatePayroll.TabIndex = 4;
+            btnCreatePayroll.Text = "Create Payroll";
+            btnCreatePayroll.UseVisualStyleBackColor = true;
+            btnCreatePayroll.Click += btnCreatePayroll_Click;
+            // 
+            // checkDetailedDeduction
+            // 
+            checkDetailedDeduction.AutoSize = true;
+            checkDetailedDeduction.Font = new Font("Verdana", 10F);
+            checkDetailedDeduction.Location = new Point(72, 170);
+            checkDetailedDeduction.Name = "checkDetailedDeduction";
+            checkDetailedDeduction.Size = new Size(347, 21);
+            checkDetailedDeduction.TabIndex = 5;
+            checkDetailedDeduction.Text = "Include SSS, PagIbig, Philhealth  in Deduction";
+            checkDetailedDeduction.UseVisualStyleBackColor = true;
             // 
             // CreatePayrollForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(371, 286);
-            Controls.Add(btnDemo);
+            ClientSize = new Size(484, 341);
+            Controls.Add(checkDetailedDeduction);
+            Controls.Add(btnCreatePayroll);
             Controls.Add(lblStopDate);
             Controls.Add(lblStartDate);
-            Controls.Add(dateStopDate);
+            Controls.Add(dateEndDate);
             Controls.Add(dateStartDate);
+            Font = new Font("Verdana", 12F);
+            Margin = new Padding(4);
             Name = "CreatePayrollForm";
-            Text = "Create Payroll Form";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Create Payroll";
             Load += CreatePayrollForm_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -99,9 +121,10 @@
         #endregion
 
         private DateTimePicker dateStartDate;
-        private DateTimePicker dateStopDate;
+        private DateTimePicker dateEndDate;
         private Label lblStartDate;
         private Label lblStopDate;
-        private Button btnDemo;
+        private Button btnCreatePayroll;
+        private CheckBox checkDetailedDeduction;
     }
 }

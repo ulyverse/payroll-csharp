@@ -1,12 +1,15 @@
 ﻿using PayrollLibrary;
+using PayrollLibrary.Model;
+using PayrollLibrary.ViewModel;
 
 namespace WinFormGUI
 {
     public partial class AttendanceForm : Form
     {
-        private Employee _employee;
+        public PayrollEmployeeDisplay _employee;
         private AttendanceController _attendanceController = new AttendanceController();
-        public AttendanceForm(Employee employee)
+        private bool isSaving = false;
+        public AttendanceForm(PayrollEmployeeDisplay employee)
         {
             InitializeComponent();
             _employee = employee;
@@ -14,10 +17,11 @@ namespace WinFormGUI
 
         private void AttendanceForm_Load(object sender, EventArgs e)
         {
-            lblEmployeeName.Text = $"{_employee.FirstName} {_employee.LastName}".ToUpper();
-            lblRate.Text = $"Rate: {_employee.Salary}";
+            lblEmployeeName.Text = $"{_employee.Name.ToUpper()}";
+            lblRate.Text = $"Rate: PHP {_employee.Rate}";
             ConfigureScrollBar();
             InitializeAttendanceForm();
+            btnCalculatePay.PerformClick();
         }
 
         private void InitializeAttendanceForm()
@@ -34,9 +38,6 @@ namespace WinFormGUI
                 panel.FlowDirection = FlowDirection.LeftToRight;
                 panel.Parent = pnlAttendance;
                 panel.AutoSize = true;
-                //panel.Dock = DockStyle.Fill;
-                //panel.Margin = Padding.Empty;
-
 
                 if (!alternate)
                     panel.BackColor = Color.LightGray;
@@ -127,16 +128,43 @@ namespace WinFormGUI
 
             e.Value = TimeOnly.FromDateTime(dateTime);
         }
-        private void CalculatePay(object sender, EventArgs e)
+        private void btn_CalculatePay(object sender, EventArgs e)
         {
-            var normalWorkingHours = _attendanceController.GetTotalNormalWorkingHours(_employee.Attendances);
-            var overtime = _attendanceController.GetTotalOverTime(_employee.Attendances);
+            CalculatePay();
+        }
 
-            var gross = _attendanceController.GetGrossPay(_employee, normalWorkingHours, overtime, 1);
+        private void CalculatePay()
+        {
+            _employee.NormalHours = _attendanceController.GetTotalNormalWorkingHours(_employee.Attendances).TotalHours;
+            _employee.Overtime = _attendanceController.GetTotalOverTime(_employee.Attendances).TotalHours;
+            _employee.CalculateGrossPay();
 
-            lblNormalWorkingHours.Text = $"Normal Working Hours: {normalWorkingHours.Days} days {normalWorkingHours.Hours:00}:{normalWorkingHours.Minutes:00}:{normalWorkingHours.Seconds:00}";
-            lblOvertime.Text = $"Overtime: {overtime.Days} days {overtime.Hours:00}:{overtime.Minutes:00}:{overtime.Seconds:00}";
-            lblGrossPay.Text = $"Gross Pay: {gross}";
+            lblNormalWorkingHours.Text = $"Normal Working Hours: {_employee.NormalHours}";
+            lblOvertimeHours.Text = $"Overtime: {_employee.Overtime}";
+            lblGrossPay.Text = $"Gross Pay: {_employee.GrossPay}";
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            var dialogResult = MessageBoxPrompt.YesNoPrompt("Do you want to calculate and save changes now?", "Save Changes");
+            if (dialogResult == DialogResult.Yes)
+            {
+                isSaving = true;
+                CalculatePay();
+                DialogResult = DialogResult.OK;
+            }
+        }
+
+        private void AttendanceForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!isSaving)
+            {
+                if (MessageBoxPrompt.Exit("Do you want to close this attendance form?") == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
         }
     }
 }

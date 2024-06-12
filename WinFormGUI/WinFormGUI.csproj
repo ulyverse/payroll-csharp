@@ -12,4 +12,8 @@
     <ProjectReference Include="..\PayrollLibrary\PayrollLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+
 </Project>

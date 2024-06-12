@@ -39,6 +39,12 @@ namespace WinFormGUI
             dgvPayrollEmployees.DataSource = payrollEmployeeDisplays;
 
             dgvPayrollEmployees.Columns[0].Visible = false;
+            dgvPayrollEmployees.Columns[6].HeaderText = "Gross Pay";
+            dgvPayrollEmployees.Columns[10].HeaderText = "Cash Adv Amount";
+            dgvPayrollEmployees.Columns[12].HeaderText = "Deductions";
+            dgvPayrollEmployees.Columns[13].HeaderText = "Net Pay";
+            dgvPayrollEmployees.Columns[14].HeaderText = "Cash Advance";
+            dgvPayrollEmployees.Columns[15].HeaderText = "Balance";
             //dgvPayrollEmployees.Columns[4].Visible = false;
             //dgvPayrollEmployees.Columns[5].Visible = false;
         }

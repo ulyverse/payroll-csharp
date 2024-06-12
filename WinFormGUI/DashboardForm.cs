@@ -47,12 +47,12 @@ namespace WinFormGUI
         {
             dgvEmployees.Columns[2].DefaultCellStyle.Format = "d";
 
-            dgvEmployees.Columns[7].HeaderText = "Cash Adv";
+            dgvEmployees.Columns[6].HeaderText = "Cash Adv";
             dgvEmployees.Columns[0].Visible = false;
             dgvEmployees.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dgvEmployees.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dgvEmployees.Columns[4].Width = 130;
-            int[] colNumbers = new int[] { 5, 6, 7, 8, 9, 10, 11 };
+            int[] colNumbers = new int[] { 5, 6, 7, 8, 9, 10 };
             foreach (int colNumber in colNumbers)
             {
                 dgvEmployees.Columns[colNumber].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;

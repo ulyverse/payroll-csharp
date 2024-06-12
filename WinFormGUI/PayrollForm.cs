@@ -134,20 +134,16 @@ namespace WinFormGUI
                         payrollEmployee.PayrollID = payrollID.Value;
                     payrollEmployee.CurrentNormalHours = item.NormalHours;
                     payrollEmployee.CurrentOvertimeHours = item.Overtime;
-                    payrollEmployee.CurrentBalance = item.Balance;
                     payrollEmployee.CurrentSnack = item.Snack;
-                    payrollEmployee.CurrentCashAdvance = item.CashAdvance;
+                    payrollEmployee.CurrentCashAdvanceAmountToPay = item.CashAdvanceAmountToPay;
+                    payrollEmployee.CurrentCashAdvance = item.PreviousCashAdvance;
                     payrollEmployee.CurrentSSS = item.SSS;
                     payrollEmployee.CurrentPagIbig = item.PagIbig;
                     payrollEmployee.CurrentPhilHealth = item.PhilHealth;
 
                     Employee employee = EmployeeData.FindById(item.EmployeeID);
                     employee.Snack = 0;
-                    employee.CashAdvance = 0;
-                    employee.Balance = 0;
-
-                    if (item.NetPay < 0)
-                        employee.Balance = Math.Abs(item.NetPay);
+                    employee.CashAdvance = item.NextCashAdvance;
 
                     EmployeeData.Update(employee);
                     PayrollEmployeeData.Insert(payrollEmployee);

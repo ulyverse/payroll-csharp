@@ -19,6 +19,8 @@ namespace WinFormGUI
         {
             lblEmployeeName.Text = $"{_employee.Name.ToUpper()}";
             lblRate.Text = $"Rate: PHP {_employee.Rate}";
+            lblBalance.Text = $"Balance: PHP {_employee.PreviousCashAdvance}";
+            txtAmount.Text = _employee.CashAdvanceAmountToPay.ToString();
             ConfigureScrollBar();
             InitializeAttendanceForm();
             btnCalculatePay.PerformClick();
@@ -147,12 +149,28 @@ namespace WinFormGUI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            var dialogResult = MessageBoxPrompt.YesNoPrompt("Do you want to calculate and save changes now?", "Save Changes");
-            if (dialogResult == DialogResult.Yes)
+            decimal amount;
+
+            if (!decimal.TryParse(txtAmount.Text.Trim(), out amount))
             {
-                isSaving = true;
-                CalculatePay();
-                DialogResult = DialogResult.OK;
+                MessageBoxPrompt.ShowInfo("Amount must be a valid input");
+            }
+            else if (amount < 0 || amount > _employee.PreviousCashAdvance)
+            {
+                MessageBoxPrompt.ShowInfo("Amount must be in between 0 and the current balance");
+            }
+            else
+            {
+                var dialogResult = MessageBoxPrompt.YesNoPrompt("Do you want to calculate and save changes now?", "Save Changes");
+                if (dialogResult == DialogResult.Yes)
+                {
+                    _employee.CashAdvanceAmountToPay = amount;
+                    _employee.CalculateNextCashAdvance();
+                    _employee.CalculateTotalDeductions();
+                    isSaving = true;
+                    CalculatePay();
+                    DialogResult = DialogResult.OK;
+                }
             }
         }
 

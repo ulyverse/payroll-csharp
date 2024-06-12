@@ -21,7 +21,6 @@ namespace PayrollLibrary.ViewModel
             if (employee.Role != null)
                 Role = employee.Role.Name;
             Salary = employee.Salary;
-            Balance = employee.Balance;
             SSS = employee.SSS;
             PagIbig = employee.PagIbig;
             PhilHealth = employee.PhilHealth;
@@ -34,7 +33,6 @@ namespace PayrollLibrary.ViewModel
         public string Department { get; set; } = "";
         public string Role { get; set; } = "";
         public decimal Salary { get; set; }
-        public decimal Balance { get; set; }
         public decimal CashAdv { get; set; }
         public decimal Snack { get; set; }
         public decimal SSS { get; set; }

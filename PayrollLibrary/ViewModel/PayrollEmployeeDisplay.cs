@@ -26,11 +26,14 @@ namespace PayrollLibrary.ViewModel
             PagIbig = payrollEmployee.CurrentPagIbig;
             PhilHealth = payrollEmployee.CurrentPhilHealth;
 
-            CashAdvance = payrollEmployee.CurrentCashAdvance;
+            CashAdvanceAmountToPay = payrollEmployee.CurrentCashAdvanceAmountToPay;
+            PreviousCashAdvance = payrollEmployee.CurrentCashAdvance;
+
+
             Snack = payrollEmployee.CurrentSnack;
-            Balance = payrollEmployee.CurrentBalance;
 
             CalculateTotalDeductions();
+            CalculateNextCashAdvance();
             CalculateGrossPay();
         }
 
@@ -48,9 +51,8 @@ namespace PayrollLibrary.ViewModel
                 PagIbig = employee.PagIbig;
                 PhilHealth = employee.PhilHealth;
             }
-            CashAdvance = employee.CashAdvance;
+            PreviousCashAdvance = employee.CashAdvance;
             Snack = employee.Snack;
-            Balance = employee.Balance;
 
             CalculateTotalDeductions();
             CalculateGrossPay();
@@ -66,11 +68,12 @@ namespace PayrollLibrary.ViewModel
         public decimal SSS { get; set; }
         public decimal PagIbig { get; set; }
         public decimal PhilHealth { get; set; }
-        public decimal Balance { get; set; }
-        public decimal CashAdvance { get; set; }
+        public decimal CashAdvanceAmountToPay { get; set; }
         public decimal Snack { get; set; }
         public decimal TotalDeductions { get; set; }
         public decimal NetPay { get; set; }
+        public decimal PreviousCashAdvance { get; set; }
+        public decimal NextCashAdvance { get; set; }
         public List<Attendance> Attendances { get; set; }
 
 
@@ -87,15 +90,18 @@ namespace PayrollLibrary.ViewModel
         {
             NetPay = GrossPay - TotalDeductions;
         }
+        public void CalculateNextCashAdvance()
+        {
+            NextCashAdvance = PreviousCashAdvance - CashAdvanceAmountToPay;
+        }
 
-        private void CalculateTotalDeductions()
+        public void CalculateTotalDeductions()
         {
             decimal totalDeductions = 0;
             totalDeductions += SSS;
             totalDeductions += PagIbig;
             totalDeductions += PhilHealth;
-            totalDeductions += Balance;
-            totalDeductions += CashAdvance;
+            totalDeductions += CashAdvanceAmountToPay;
             totalDeductions += Snack;
             TotalDeductions = totalDeductions;
         }

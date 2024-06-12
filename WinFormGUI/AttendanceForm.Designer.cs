@@ -221,7 +221,7 @@
             // lblBalance
             // 
             lblBalance.AutoSize = true;
-            lblBalance.Location = new Point(444, 472);
+            lblBalance.Location = new Point(444, 475);
             lblBalance.Name = "lblBalance";
             lblBalance.Size = new Size(79, 18);
             lblBalance.TabIndex = 18;

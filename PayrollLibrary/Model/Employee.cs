@@ -13,7 +13,6 @@
         public string Username { get; set; }
         public string Password { get; set; } = "";
         public decimal Salary { get; set; }
-        public decimal Balance { get; set; }
         public decimal CashAdvance { get; set; }
         public decimal Snack { get; set; }
         public decimal SSS { get; set; }

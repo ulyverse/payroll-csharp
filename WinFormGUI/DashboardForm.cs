@@ -97,13 +97,28 @@ namespace WinFormGUI
         private void btnEditEmployee_Click(object sender, EventArgs e)
         {
             int rowIdx = dgvEmployees.SelectedCells[0].RowIndex;
-            int id = (int)dgvEmployees.Rows[rowIdx].Cells[0].Value;
-            var employee = EmployeeData.FindById(id);
-            OpenEmployeeForm(employee);
+            int id = GetEmployeeIdDGV(rowIdx);
+            OpenEmployeeForm(id);
         }
 
-        private void OpenEmployeeForm(Employee? emp = null)
+        private void dgvEmployees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1) return;
+            int rowIdx = dgvEmployees.SelectedCells[0].RowIndex;
+            int id = GetEmployeeIdDGV(rowIdx);
+            OpenEmployeeForm(id);
+        }
+
+        private int GetEmployeeIdDGV(int rowIdx)
+        {
+            return (int)dgvEmployees.Rows[rowIdx].Cells[0].Value;
+        }
+
+        private void OpenEmployeeForm(int? id = null)
+        {
+            Employee emp = null;
+            if (id.HasValue)
+                emp = EmployeeData.FindById(id.Value);
             var employeeForm = new EmployeeForm(emp);
             var result = employeeForm.ShowDialog();
             if (result == DialogResult.OK || result == DialogResult.Yes)
@@ -224,5 +239,14 @@ namespace WinFormGUI
             new ViewPayrollDetailed(payroll).Show();
         }
 
+        private void btnDeletePayroll_Click(object sender, EventArgs e)
+        {
+            int payrollId = (int)dgvPayroll.SelectedRows[0].Cells[0].Value;
+            if (MessageBoxPrompt.Delete("payroll") == DialogResult.Yes)
+            {
+                PayrollData.DeletePayroll(payrollId);
+                PopulatePayrollDGV();
+            }
+        }
     }
 }

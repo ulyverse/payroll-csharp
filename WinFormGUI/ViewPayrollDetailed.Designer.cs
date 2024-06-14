@@ -32,8 +32,12 @@
             topPanel = new Panel();
             txtSearchName = new TextBox();
             lblName = new Label();
+            bottomPanel = new Panel();
+            btnClose = new Button();
+            btnExport = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPayrollEmployees).BeginInit();
             topPanel.SuspendLayout();
+            bottomPanel.SuspendLayout();
             SuspendLayout();
             // 
             // dgvPayrollEmployees
@@ -49,7 +53,7 @@
             dgvPayrollEmployees.Name = "dgvPayrollEmployees";
             dgvPayrollEmployees.ReadOnly = true;
             dgvPayrollEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPayrollEmployees.Size = new Size(1784, 641);
+            dgvPayrollEmployees.Size = new Size(1784, 601);
             dgvPayrollEmployees.TabIndex = 0;
             // 
             // topPanel
@@ -79,12 +83,43 @@
             lblName.TabIndex = 0;
             lblName.Text = "Name:";
             // 
+            // bottomPanel
+            // 
+            bottomPanel.Controls.Add(btnClose);
+            bottomPanel.Controls.Add(btnExport);
+            bottomPanel.Dock = DockStyle.Bottom;
+            bottomPanel.Location = new Point(0, 641);
+            bottomPanel.Name = "bottomPanel";
+            bottomPanel.Size = new Size(1784, 40);
+            bottomPanel.TabIndex = 2;
+            // 
+            // btnClose
+            // 
+            btnClose.Location = new Point(256, 6);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(217, 30);
+            btnClose.TabIndex = 1;
+            btnClose.Text = "Close";
+            btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
+            // 
+            // btnExport
+            // 
+            btnExport.Location = new Point(12, 5);
+            btnExport.Name = "btnExport";
+            btnExport.Size = new Size(217, 30);
+            btnExport.TabIndex = 0;
+            btnExport.Text = "Export";
+            btnExport.UseVisualStyleBackColor = true;
+            btnExport.Click += btnExport_Click;
+            // 
             // ViewPayrollDetailed
             // 
             AutoScaleDimensions = new SizeF(10F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1784, 681);
             Controls.Add(dgvPayrollEmployees);
+            Controls.Add(bottomPanel);
             Controls.Add(topPanel);
             Font = new Font("Verdana", 12F);
             Margin = new Padding(4);
@@ -95,6 +130,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvPayrollEmployees).EndInit();
             topPanel.ResumeLayout(false);
             topPanel.PerformLayout();
+            bottomPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -104,5 +140,8 @@
         private Panel topPanel;
         private TextBox txtSearchName;
         private Label lblName;
+        private Panel bottomPanel;
+        private Button btnClose;
+        private Button btnExport;
     }
 }

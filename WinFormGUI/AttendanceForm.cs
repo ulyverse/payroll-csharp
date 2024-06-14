@@ -33,10 +33,12 @@ namespace WinFormGUI
 
         private void CreateAttendanceSheetForm()
         {
+            pnlAttendance.SuspendLayout();
             bool alternate = true;
             foreach (var attendance in _employee.Attendances)
             {
                 var panel = new FlowLayoutPanel();
+
                 panel.FlowDirection = FlowDirection.LeftToRight;
                 panel.Parent = pnlAttendance;
                 panel.AutoSize = true;
@@ -58,10 +60,12 @@ namespace WinFormGUI
 
                     timePicker.Parent = panel;
                     timePicker.DataBindings.Add("Enabled", chkEnabled, "Checked");
+
                     var strProperty = i % 2 == 0 ? "TimeIn" : "TimeOut";
                     BindTimePickerToTimeBlock(timePicker, attendance.TimeBlocks[i / 2], strProperty);
                 }
             }
+            pnlAttendance.ResumeLayout();
         }
 
         public void BindTimePickerToTimeBlock(DateTimePicker timePicker, TimeBlock timeBlock, string property)
@@ -87,7 +91,7 @@ namespace WinFormGUI
             CheckBox chkEnabled = new CheckBox();
             chkEnabled.Font = new Font("Segoe UI", 9);
             chkEnabled.Text = "In";
-            chkEnabled.Width = 38;
+            chkEnabled.Width = 45;
             chkEnabled.Dock = DockStyle.Fill;
             chkEnabled.TextAlign = ContentAlignment.MiddleCenter;
             chkEnabled.DataBindings.Add("Checked", attendance, "Enabled", true, DataSourceUpdateMode.OnPropertyChanged);
@@ -112,7 +116,7 @@ namespace WinFormGUI
             dateTimePicker.Format = DateTimePickerFormat.Custom;
             dateTimePicker.CustomFormat = "hh:mm tt";
             dateTimePicker.ShowUpDown = true;
-            dateTimePicker.Size = new Size(120, 30);
+            dateTimePicker.Size = new Size(140, 30);
             dateTimePicker.Font = new Font("Verdana", 14, FontStyle.Regular);
             dateTimePicker.Value = new DateTime(2015, 5, 10, 8, 0, 0);
             dateTimePicker.Margin = new Padding(5, 0, 5, 0);
@@ -141,7 +145,7 @@ namespace WinFormGUI
             _employee.Overtime = _attendanceController.GetTotalOverTime(_employee.Attendances).TotalHours;
             _employee.CalculateGrossPay();
 
-            lblNormalWorkingHours.Text = $"Normal Working Hours: {_employee.NormalHours}";
+            lblNormalWorkingHours.Text = $"Normal Hours: {_employee.NormalHours}";
             lblOvertimeHours.Text = $"Overtime: {_employee.Overtime}";
             lblGrossPay.Text = $"Gross Pay: {_employee.GrossPay}";
 

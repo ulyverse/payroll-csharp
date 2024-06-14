@@ -39,6 +39,13 @@ namespace WinFormGUI
             _employeeDisplayList = new BindingList<PayrollEmployeeDisplay>();
             dgvPayrollEmployees.DataSource = _employeeDisplayList;
             dgvPayrollEmployees.Columns[0].Visible = false;
+            dgvPayrollEmployees.Columns[4].HeaderText = "Normal Hours";
+            dgvPayrollEmployees.Columns[6].HeaderText = "Gross Pay";
+            dgvPayrollEmployees.Columns[10].HeaderText = "CA Amount";
+            dgvPayrollEmployees.Columns[12].HeaderText = "Total Deductions";
+            dgvPayrollEmployees.Columns[13].HeaderText = "Net Pay";
+            dgvPayrollEmployees.Columns[14].HeaderText = "Cash Advance";
+            dgvPayrollEmployees.Columns[15].HeaderText = "Balance";
         }
 
         private void btnAddToPayroll_Click(object sender, EventArgs e)

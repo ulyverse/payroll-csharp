@@ -39,7 +39,7 @@ namespace WinFormGUI
         {
             dgvPayroll.Columns[0].Visible = false;
             dgvPayroll.Columns[1].HeaderText = "Start Date";
-            dgvPayroll.Columns[2].HeaderText = "Stop Date";
+            dgvPayroll.Columns[2].HeaderText = "End Date";
             dgvPayroll.Columns[3].HeaderText = "Detailed Deductions";
         }
 
@@ -52,7 +52,7 @@ namespace WinFormGUI
             dgvEmployees.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dgvEmployees.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dgvEmployees.Columns[4].Width = 130;
-            int[] colNumbers = new int[] { 5, 6, 7, 8, 9, 10 };
+            int[] colNumbers = { 5, 6, 7, 8, 9, 10 };
             foreach (int colNumber in colNumbers)
             {
                 dgvEmployees.Columns[colNumber].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
@@ -70,7 +70,7 @@ namespace WinFormGUI
 
         private void PopulateEmployeesDGV()
         {
-            var employeeList = EmployeeData.GetAllDetailed();
+            var employeeList = EmployeeData.GetAllActiveEmployeesDetailed();
             var employeeListDisplay = employeeList.Select(x => new EmployeeDisplay(x)).ToList();
             _employees = employeeListDisplay;
             employeeBindingSource.DataSource = employeeListDisplay;
@@ -133,7 +133,7 @@ namespace WinFormGUI
             {
                 int rowIdx = dgvEmployees.SelectedCells[0].RowIndex;
                 int id = (int)dgvEmployees.Rows[rowIdx].Cells[0].Value;
-                EmployeeData.Delete(id);
+                EmployeeData.SetIsActive(id, false);
                 PopulateEmployeesDGV();
             }
 
@@ -185,8 +185,9 @@ namespace WinFormGUI
             else if (MessageBoxPrompt.Delete() == DialogResult.Yes)
             {
                 int id = (int)value;
-                DepartmentData.Delete(id);
+                DepartmentData.DeleteDepartment(id);
                 PopulateDepartmentListbox();
+                PopulateEmployeesDGV();
             }
         }
 
@@ -247,6 +248,11 @@ namespace WinFormGUI
                 PayrollData.DeletePayroll(payrollId);
                 PopulatePayrollDGV();
             }
+        }
+
+        private void pagePayroll_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

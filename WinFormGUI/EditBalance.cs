@@ -25,13 +25,15 @@ namespace WinFormGUI
         private void btnAdd_Click(object sender, EventArgs e)
         {
             decimal amount;
+            decimal currentAmount = rbtnCashAdvance.Checked ? _employee.CashAdvance : _employee.Snack;
+            string currentAmountName = rbtnCashAdvance.Checked ? "cash advance" : "snack";
             if (!decimal.TryParse(txtBalance.Text, out amount))
             {
                 MessageBoxPrompt.ShowInfo("Please enter a valid amount number");
             }
-            else if (amount < 0)
+            else if (currentAmount + amount < 0)
             {
-                MessageBoxPrompt.ShowInfo("Amount cannot be negative.");
+                MessageBoxPrompt.ShowInfo($"Amount cannot be more than {currentAmountName} amount.");
             }
             else if (MessageBoxPrompt.Save() == DialogResult.Yes)
             {

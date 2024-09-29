@@ -67,10 +67,10 @@
             pageEmployee.Controls.Add(mainPanel);
             pageEmployee.Controls.Add(topPanel);
             pageEmployee.Controls.Add(bottomPanel);
-            pageEmployee.Location = new Point(4, 34);
+            pageEmployee.Location = new Point(4, 27);
             pageEmployee.Name = "pageEmployee";
             pageEmployee.Padding = new Padding(3);
-            pageEmployee.Size = new Size(1376, 655);
+            pageEmployee.Size = new Size(1376, 662);
             pageEmployee.TabIndex = 1;
             pageEmployee.Text = "Employees";
             pageEmployee.UseVisualStyleBackColor = true;
@@ -82,7 +82,7 @@
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(3, 43);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1370, 569);
+            mainPanel.Size = new Size(1370, 576);
             mainPanel.TabIndex = 6;
             // 
             // dgvEmployees
@@ -99,7 +99,7 @@
             dgvEmployees.ReadOnly = true;
             dgvEmployees.RowHeadersWidth = 51;
             dgvEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEmployees.Size = new Size(1370, 569);
+            dgvEmployees.Size = new Size(1370, 576);
             dgvEmployees.TabIndex = 4;
             dgvEmployees.CellDoubleClick += dgvEmployees_CellDoubleClick;
             // 
@@ -119,7 +119,7 @@
             lblFirstname.AutoSize = true;
             lblFirstname.Location = new Point(136, 5);
             lblFirstname.Name = "lblFirstname";
-            lblFirstname.Size = new Size(79, 25);
+            lblFirstname.Size = new Size(62, 18);
             lblFirstname.TabIndex = 2;
             lblFirstname.Text = "Name:";
             // 
@@ -129,7 +129,7 @@
             lblSearch.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSearch.Location = new Point(15, 5);
             lblSearch.Name = "lblSearch";
-            lblSearch.Size = new Size(103, 25);
+            lblSearch.Size = new Size(80, 18);
             lblSearch.TabIndex = 1;
             lblSearch.Text = "SEARCH";
             // 
@@ -137,7 +137,7 @@
             // 
             txtName.Location = new Point(221, 4);
             txtName.Name = "txtName";
-            txtName.Size = new Size(229, 32);
+            txtName.Size = new Size(229, 27);
             txtName.TabIndex = 0;
             txtName.TextChanged += txtName_TextChanged;
             // 
@@ -148,7 +148,7 @@
             bottomPanel.Controls.Add(btnEditEmployee);
             bottomPanel.Controls.Add(btnDeleteEmployee);
             bottomPanel.Dock = DockStyle.Bottom;
-            bottomPanel.Location = new Point(3, 612);
+            bottomPanel.Location = new Point(3, 619);
             bottomPanel.Name = "bottomPanel";
             bottomPanel.Size = new Size(1370, 40);
             bottomPanel.TabIndex = 5;
@@ -203,13 +203,14 @@
             pagePayroll.Controls.Add(btnDeletePayroll);
             pagePayroll.Controls.Add(dgvPayroll);
             pagePayroll.Controls.Add(btnCreatePayroll);
-            pagePayroll.Location = new Point(4, 34);
+            pagePayroll.Location = new Point(4, 27);
             pagePayroll.Name = "pagePayroll";
             pagePayroll.Padding = new Padding(3);
-            pagePayroll.Size = new Size(1376, 655);
+            pagePayroll.Size = new Size(1376, 662);
             pagePayroll.TabIndex = 0;
             pagePayroll.Text = "Payroll";
             pagePayroll.UseVisualStyleBackColor = true;
+            pagePayroll.Click += pagePayroll_Click;
             // 
             // btnDeletePayroll
             // 
@@ -267,10 +268,10 @@
             pageDepartments.Controls.Add(btnRemoveDepartment);
             pageDepartments.Controls.Add(btnAddDepartment);
             pageDepartments.Controls.Add(listDepartments);
-            pageDepartments.Location = new Point(4, 34);
+            pageDepartments.Location = new Point(4, 24);
             pageDepartments.Name = "pageDepartments";
             pageDepartments.Padding = new Padding(3);
-            pageDepartments.Size = new Size(1376, 655);
+            pageDepartments.Size = new Size(1376, 665);
             pageDepartments.TabIndex = 2;
             pageDepartments.Text = "Departments";
             pageDepartments.UseVisualStyleBackColor = true;
@@ -280,7 +281,7 @@
             lblDepartmentName.AutoSize = true;
             lblDepartmentName.Location = new Point(262, 20);
             lblDepartmentName.Name = "lblDepartmentName";
-            lblDepartmentName.Size = new Size(204, 25);
+            lblDepartmentName.Size = new Size(163, 18);
             lblDepartmentName.TabIndex = 4;
             lblDepartmentName.Text = "Department name:";
             // 
@@ -288,7 +289,7 @@
             // 
             txtDepartmentName.Location = new Point(262, 41);
             txtDepartmentName.Name = "txtDepartmentName";
-            txtDepartmentName.Size = new Size(161, 32);
+            txtDepartmentName.Size = new Size(161, 27);
             txtDepartmentName.TabIndex = 3;
             // 
             // btnRemoveDepartment
@@ -315,15 +316,15 @@
             // listDepartments
             // 
             listDepartments.FormattingEnabled = true;
-            listDepartments.ItemHeight = 25;
+            listDepartments.ItemHeight = 18;
             listDepartments.Location = new Point(8, 6);
             listDepartments.Name = "listDepartments";
-            listDepartments.Size = new Size(235, 229);
+            listDepartments.Size = new Size(235, 202);
             listDepartments.TabIndex = 0;
             // 
             // DashboardForm
             // 
-            AutoScaleDimensions = new SizeF(13F, 25F);
+            AutoScaleDimensions = new SizeF(10F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1384, 693);
             Controls.Add(tabControlDashboard);

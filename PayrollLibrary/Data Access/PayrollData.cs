@@ -33,5 +33,15 @@ namespace PayrollLibrary.Data_Access
 
             return payroll;
         }
+
+        public static int DeletePayroll(int id)
+        {
+            var payrollEmpoyeeId = PayrollEmployeeData.GetAllIDFromPayroll(id);
+            foreach (var pEmployeeId in payrollEmpoyeeId)
+            {
+                PayrollEmployeeData.Delete(pEmployeeId);
+            }
+            return Delete(id);
+        }
     }
 }

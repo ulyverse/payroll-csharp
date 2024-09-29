@@ -18,7 +18,7 @@ namespace PayrollLibrary.ViewModel
             if (employee.Department != null)
                 Department = employee.Department.Name;
 
-            Rate = employee.Salary;
+            Rate = payrollEmployee.CurrentRate;
             NormalHours = payrollEmployee.CurrentNormalHours;
             Overtime = payrollEmployee.CurrentOvertimeHours;
 

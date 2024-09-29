@@ -1,0 +1,74 @@
+﻿{
+  "DateRange": {
+    "row": 5,
+    "column": 1
+  },
+  "Name": {
+    "row": 6,
+    "column": 2
+  },
+  "Department": {
+    "row": 7,
+    "column": 2
+  },
+  "NormalHours": {
+    "row": 8,
+    "column": 2
+  },
+  "Overtime": {
+    "row": 9,
+    "column": 2
+  },
+  "TotalHours": {
+    "row": 10,
+    "column": 2
+  },
+  "Rate": {
+    "row": 11,
+    "column": 2
+  },
+  "Date": {
+    "row": 9,
+    "column": 3
+  },
+  "SSS": {
+    "row": 11,
+    "column": 5
+  },
+  "PagIbig": {
+    "row": 12,
+    "column": 5
+  },
+  "PhilHealth": {
+    "row": 13,
+    "column": 5
+  },
+  "CashAdvanceAmountToPay": {
+    "row": 14,
+    "column": 5
+  },
+  "Snack": {
+    "row": 15,
+    "column": 5
+  },
+  "GrossPay": {
+    "row": 17,
+    "column": 2
+  },
+  "TotalDeductions": {
+    "row": 17,
+    "column": 5
+  },
+  "NetPay": {
+    "row": 19,
+    "column": 2
+  },
+  "PreviousCashAdvance": {
+    "row": 25,
+    "column": 5
+  },
+  "NextCashAdvance": {
+    "row": 27,
+    "column": 5
+  }
+}

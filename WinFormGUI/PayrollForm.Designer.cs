@@ -58,9 +58,9 @@
             mainPanel.Controls.Add(panelPayrolEmployee);
             mainPanel.Controls.Add(buttonsPanel);
             mainPanel.Dock = DockStyle.Fill;
-            mainPanel.Location = new Point(343, 0);
+            mainPanel.Location = new Point(293, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1521, 681);
+            mainPanel.Size = new Size(1571, 681);
             mainPanel.TabIndex = 0;
             // 
             // panelPayrolEmployee
@@ -70,7 +70,7 @@
             panelPayrolEmployee.Location = new Point(0, 0);
             panelPayrolEmployee.Name = "panelPayrolEmployee";
             panelPayrolEmployee.Padding = new Padding(20, 20, 20, 0);
-            panelPayrolEmployee.Size = new Size(1521, 627);
+            panelPayrolEmployee.Size = new Size(1571, 627);
             panelPayrolEmployee.TabIndex = 2;
             // 
             // dgvPayrollEmployees
@@ -85,7 +85,7 @@
             dgvPayrollEmployees.Name = "dgvPayrollEmployees";
             dgvPayrollEmployees.ReadOnly = true;
             dgvPayrollEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPayrollEmployees.Size = new Size(1481, 607);
+            dgvPayrollEmployees.Size = new Size(1531, 607);
             dgvPayrollEmployees.TabIndex = 0;
             dgvPayrollEmployees.CellDoubleClick += dgvPayrollEmployees_CellDoubleClick;
             // 
@@ -96,14 +96,14 @@
             buttonsPanel.Dock = DockStyle.Bottom;
             buttonsPanel.Location = new Point(0, 627);
             buttonsPanel.Name = "buttonsPanel";
-            buttonsPanel.Size = new Size(1521, 54);
+            buttonsPanel.Size = new Size(1571, 54);
             buttonsPanel.TabIndex = 1;
             // 
             // btnCreatePayroll
             // 
             btnCreatePayroll.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCreatePayroll.ForeColor = SystemColors.ControlText;
-            btnCreatePayroll.Location = new Point(1148, 9);
+            btnCreatePayroll.Location = new Point(20, 10);
             btnCreatePayroll.Name = "btnCreatePayroll";
             btnCreatePayroll.Size = new Size(215, 35);
             btnCreatePayroll.TabIndex = 1;
@@ -114,7 +114,7 @@
             // btnCancel
             // 
             btnCancel.ForeColor = Color.Red;
-            btnCancel.Location = new Point(1381, 9);
+            btnCancel.Location = new Point(253, 10);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(120, 35);
             btnCancel.TabIndex = 0;
@@ -130,7 +130,7 @@
             sidePanel.Location = new Point(0, 0);
             sidePanel.Name = "sidePanel";
             sidePanel.Padding = new Padding(10, 10, 0, 10);
-            sidePanel.Size = new Size(343, 681);
+            sidePanel.Size = new Size(293, 681);
             sidePanel.TabIndex = 1;
             // 
             // grpEmployeeList
@@ -142,7 +142,7 @@
             grpEmployeeList.Dock = DockStyle.Fill;
             grpEmployeeList.Location = new Point(10, 190);
             grpEmployeeList.Name = "grpEmployeeList";
-            grpEmployeeList.Size = new Size(333, 481);
+            grpEmployeeList.Size = new Size(283, 481);
             grpEmployeeList.TabIndex = 1;
             grpEmployeeList.TabStop = false;
             grpEmployeeList.Text = "Employees";
@@ -162,12 +162,12 @@
             listEmployees.ItemHeight = 18;
             listEmployees.Location = new Point(16, 96);
             listEmployees.Name = "listEmployees";
-            listEmployees.Size = new Size(298, 364);
+            listEmployees.Size = new Size(248, 364);
             listEmployees.TabIndex = 3;
             // 
             // btnAddToPayroll
             // 
-            btnAddToPayroll.Location = new Point(207, 63);
+            btnAddToPayroll.Location = new Point(157, 63);
             btnAddToPayroll.Name = "btnAddToPayroll";
             btnAddToPayroll.Size = new Size(107, 27);
             btnAddToPayroll.TabIndex = 2;
@@ -179,7 +179,7 @@
             // 
             txtSearch.Location = new Point(16, 63);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(185, 27);
+            txtSearch.Size = new Size(135, 27);
             txtSearch.TabIndex = 1;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
@@ -191,7 +191,7 @@
             grpPayrollInformation.Dock = DockStyle.Top;
             grpPayrollInformation.Location = new Point(10, 10);
             grpPayrollInformation.Name = "grpPayrollInformation";
-            grpPayrollInformation.Size = new Size(333, 180);
+            grpPayrollInformation.Size = new Size(283, 180);
             grpPayrollInformation.TabIndex = 0;
             grpPayrollInformation.TabStop = false;
             grpPayrollInformation.Text = "Payroll Configuration";

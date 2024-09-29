@@ -9,5 +9,10 @@ namespace PayrollLibrary.Data_Access
 {
     public class PayrollEmployeeData : SqliteDataAccess<PayrollEmployee>
     {
+        public static List<int> GetAllIDFromPayroll(int payrollId)
+        {
+            return Query("SELECT ID FROM PayrollEmployees WHERE PayrollID = @PayrollId", new { PayrollId = payrollId }).Select(x => x.ID).ToList();
+        }
+
     }
 }

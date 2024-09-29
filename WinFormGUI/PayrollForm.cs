@@ -31,7 +31,7 @@ namespace WinFormGUI
             lblStartDate.Text = $"Start: {_payroll.StartDate}";
             lblEndDate.Text = $"End: {_payroll.EndDate}";
             checkDetailedDeduction.Checked = _payroll.DetailedDeduction;
-            _employees = EmployeeData.GetAll();
+            _employees = EmployeeData.GetAllActiveEmployees();
             listEmployees.DataSource = _employees;
             listEmployees.DisplayMember = "FullName";
             listEmployees.ValueMember = "ID";
@@ -39,6 +39,13 @@ namespace WinFormGUI
             _employeeDisplayList = new BindingList<PayrollEmployeeDisplay>();
             dgvPayrollEmployees.DataSource = _employeeDisplayList;
             dgvPayrollEmployees.Columns[0].Visible = false;
+            dgvPayrollEmployees.Columns[4].HeaderText = "Normal Hours";
+            dgvPayrollEmployees.Columns[6].HeaderText = "Gross Pay";
+            dgvPayrollEmployees.Columns[10].HeaderText = "CA Amount";
+            dgvPayrollEmployees.Columns[12].HeaderText = "Total Deductions";
+            dgvPayrollEmployees.Columns[13].HeaderText = "Net Pay";
+            dgvPayrollEmployees.Columns[14].HeaderText = "Cash Advance";
+            dgvPayrollEmployees.Columns[15].HeaderText = "Balance";
         }
 
         private void btnAddToPayroll_Click(object sender, EventArgs e)
@@ -46,7 +53,8 @@ namespace WinFormGUI
             Employee emp = (Employee)listEmployees.SelectedItem;
 
             if (emp == null) return;
-            emp.Department = DepartmentData.FindById(emp.DepartmentID);
+            if (emp.DepartmentID != null)
+                emp.Department = DepartmentData.FindById(emp.DepartmentID.Value);
             var empDisplay = new PayrollEmployeeDisplay(emp, _payroll.DetailedDeduction);
             empDisplay.Attendances = AttendanceController.GetAttendances(_payroll.StartDate, _payroll.EndDate);
             var form = new AttendanceForm(empDisplay);
@@ -132,6 +140,7 @@ namespace WinFormGUI
                     payrollEmployee.EmployeeID = item.EmployeeID;
                     if (payrollID.HasValue)
                         payrollEmployee.PayrollID = payrollID.Value;
+                    payrollEmployee.CurrentRate = item.Rate;
                     payrollEmployee.CurrentNormalHours = item.NormalHours;
                     payrollEmployee.CurrentOvertimeHours = item.Overtime;
                     payrollEmployee.CurrentSnack = item.Snack;
@@ -143,7 +152,12 @@ namespace WinFormGUI
 
                     Employee employee = EmployeeData.FindById(item.EmployeeID);
                     employee.Snack = 0;
+
+
                     employee.CashAdvance = item.NextCashAdvance;
+
+                    if (item.NetPay < 0)
+                        employee.CashAdvance += Math.Abs(item.NetPay);
 
                     EmployeeData.Update(employee);
                     PayrollEmployeeData.Insert(payrollEmployee);

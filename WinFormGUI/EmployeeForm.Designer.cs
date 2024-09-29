@@ -61,91 +61,91 @@
             // lblFirstName
             // 
             lblFirstName.AutoSize = true;
-            lblFirstName.Location = new Point(46, 43);
+            lblFirstName.Location = new Point(33, 43);
             lblFirstName.Name = "lblFirstName";
-            lblFirstName.Size = new Size(102, 18);
+            lblFirstName.Size = new Size(129, 25);
             lblFirstName.TabIndex = 0;
             lblFirstName.Text = "First name:";
             // 
             // txtFirstName
             // 
-            txtFirstName.Location = new Point(154, 40);
+            txtFirstName.Location = new Point(168, 40);
             txtFirstName.Name = "txtFirstName";
-            txtFirstName.Size = new Size(151, 27);
+            txtFirstName.Size = new Size(151, 32);
             txtFirstName.TabIndex = 1;
             // 
             // txtLastName
             // 
-            txtLastName.Location = new Point(154, 83);
+            txtLastName.Location = new Point(168, 83);
             txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(151, 27);
+            txtLastName.Size = new Size(151, 32);
             txtLastName.TabIndex = 3;
             // 
             // lblLastName
             // 
             lblLastName.AutoSize = true;
-            lblLastName.Location = new Point(47, 86);
+            lblLastName.Location = new Point(37, 86);
             lblLastName.Name = "lblLastName";
-            lblLastName.Size = new Size(101, 18);
+            lblLastName.Size = new Size(125, 25);
             lblLastName.TabIndex = 2;
             lblLastName.Text = "Last name:";
             // 
             // lblBirthdate
             // 
             lblBirthdate.AutoSize = true;
-            lblBirthdate.Location = new Point(57, 129);
+            lblBirthdate.Location = new Point(47, 129);
             lblBirthdate.Name = "lblBirthdate";
-            lblBirthdate.Size = new Size(91, 18);
+            lblBirthdate.Size = new Size(115, 25);
             lblBirthdate.TabIndex = 4;
             lblBirthdate.Text = "Birthdate:";
             // 
             // dateBirthdate
             // 
             dateBirthdate.Format = DateTimePickerFormat.Short;
-            dateBirthdate.Location = new Point(154, 126);
+            dateBirthdate.Location = new Point(168, 126);
             dateBirthdate.Name = "dateBirthdate";
-            dateBirthdate.Size = new Size(151, 27);
+            dateBirthdate.Size = new Size(151, 32);
             dateBirthdate.TabIndex = 5;
             // 
             // lblUsername
             // 
             lblUsername.AutoSize = true;
-            lblUsername.Location = new Point(51, 258);
+            lblUsername.Location = new Point(39, 258);
             lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(97, 18);
+            lblUsername.Size = new Size(123, 25);
             lblUsername.TabIndex = 6;
             lblUsername.Text = "Username:";
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(154, 253);
+            txtUsername.Location = new Point(168, 253);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(151, 27);
+            txtUsername.Size = new Size(151, 32);
             txtUsername.TabIndex = 11;
             // 
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(56, 301);
+            lblPassword.Location = new Point(48, 301);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(92, 18);
+            lblPassword.Size = new Size(114, 25);
             lblPassword.TabIndex = 8;
             lblPassword.Text = "Password:";
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(154, 296);
+            txtPassword.Location = new Point(168, 296);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '●';
-            txtPassword.Size = new Size(151, 27);
+            txtPassword.Size = new Size(151, 32);
             txtPassword.TabIndex = 13;
             // 
             // lblDepartment
             // 
             lblDepartment.AutoSize = true;
-            lblDepartment.Location = new Point(36, 172);
+            lblDepartment.Location = new Point(21, 172);
             lblDepartment.Name = "lblDepartment";
-            lblDepartment.Size = new Size(112, 18);
+            lblDepartment.Size = new Size(141, 25);
             lblDepartment.TabIndex = 10;
             lblDepartment.Text = "Department:";
             // 
@@ -153,91 +153,91 @@
             // 
             cmbDepartment.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbDepartment.FormattingEnabled = true;
-            cmbDepartment.Location = new Point(154, 169);
+            cmbDepartment.Location = new Point(168, 169);
             cmbDepartment.Name = "cmbDepartment";
-            cmbDepartment.Size = new Size(151, 26);
+            cmbDepartment.Size = new Size(151, 33);
             cmbDepartment.TabIndex = 7;
             // 
             // cmbRoles
             // 
             cmbRoles.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbRoles.FormattingEnabled = true;
-            cmbRoles.Location = new Point(154, 211);
+            cmbRoles.Location = new Point(168, 211);
             cmbRoles.Name = "cmbRoles";
-            cmbRoles.Size = new Size(151, 26);
+            cmbRoles.Size = new Size(151, 33);
             cmbRoles.TabIndex = 9;
             // 
             // lblRoles
             // 
             lblRoles.AutoSize = true;
-            lblRoles.Location = new Point(88, 215);
+            lblRoles.Location = new Point(87, 215);
             lblRoles.Name = "lblRoles";
-            lblRoles.Size = new Size(60, 18);
+            lblRoles.Size = new Size(75, 25);
             lblRoles.TabIndex = 12;
             lblRoles.Text = "Roles:";
             // 
             // lblSalary
             // 
             lblSalary.AutoSize = true;
-            lblSalary.Location = new Point(69, 61);
+            lblSalary.Location = new Point(60, 57);
             lblSalary.Name = "lblSalary";
-            lblSalary.Size = new Size(65, 18);
+            lblSalary.Size = new Size(86, 25);
             lblSalary.TabIndex = 14;
             lblSalary.Text = "Salary:";
             // 
             // txtSalary
             // 
-            txtSalary.Location = new Point(140, 55);
+            txtSalary.Location = new Point(149, 54);
             txtSalary.Name = "txtSalary";
-            txtSalary.Size = new Size(151, 27);
+            txtSalary.Size = new Size(151, 32);
             txtSalary.TabIndex = 15;
             // 
             // lblSSS
             // 
             lblSSS.AutoSize = true;
-            lblSSS.Location = new Point(89, 108);
+            lblSSS.Location = new Point(80, 104);
             lblSSS.Name = "lblSSS";
-            lblSSS.Size = new Size(45, 18);
+            lblSSS.Size = new Size(63, 25);
             lblSSS.TabIndex = 16;
             lblSSS.Text = "SSS:";
             // 
             // txtSSS
             // 
-            txtSSS.Location = new Point(140, 103);
+            txtSSS.Location = new Point(149, 101);
             txtSSS.Name = "txtSSS";
-            txtSSS.Size = new Size(151, 27);
+            txtSSS.Size = new Size(151, 32);
             txtSSS.TabIndex = 17;
             // 
             // lblPagIbig
             // 
             lblPagIbig.AutoSize = true;
-            lblPagIbig.Location = new Point(57, 155);
+            lblPagIbig.Location = new Point(48, 151);
             lblPagIbig.Name = "lblPagIbig";
-            lblPagIbig.Size = new Size(77, 18);
+            lblPagIbig.Size = new Size(95, 25);
             lblPagIbig.TabIndex = 18;
             lblPagIbig.Text = "PagIbig:";
             // 
             // txtPagIbig
             // 
-            txtPagIbig.Location = new Point(140, 151);
+            txtPagIbig.Location = new Point(149, 148);
             txtPagIbig.Name = "txtPagIbig";
-            txtPagIbig.Size = new Size(151, 27);
+            txtPagIbig.Size = new Size(151, 32);
             txtPagIbig.TabIndex = 19;
             // 
             // lblPhilHealth
             // 
             lblPhilHealth.AutoSize = true;
-            lblPhilHealth.Location = new Point(35, 202);
+            lblPhilHealth.Location = new Point(26, 198);
             lblPhilHealth.Name = "lblPhilHealth";
-            lblPhilHealth.Size = new Size(99, 18);
+            lblPhilHealth.Size = new Size(124, 25);
             lblPhilHealth.TabIndex = 20;
             lblPhilHealth.Text = "PhilHealth:";
             // 
             // txtPhilHealth
             // 
-            txtPhilHealth.Location = new Point(140, 199);
+            txtPhilHealth.Location = new Point(149, 195);
             txtPhilHealth.Name = "txtPhilHealth";
-            txtPhilHealth.Size = new Size(151, 27);
+            txtPhilHealth.Size = new Size(151, 32);
             txtPhilHealth.TabIndex = 21;
             // 
             // btnAddEdit
@@ -302,7 +302,7 @@
             // 
             // EmployeeForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 18F);
+            AutoScaleDimensions = new SizeF(13F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(785, 416);
             Controls.Add(btnCancel);

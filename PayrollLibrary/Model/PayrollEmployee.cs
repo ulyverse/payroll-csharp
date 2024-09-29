@@ -5,6 +5,7 @@
         public int ID { get; set; }
         public int PayrollID { get; set; }
         public int EmployeeID { get; set; }
+        public decimal CurrentRate { get; set; }
         public double CurrentNormalHours { get; set; }
         public double CurrentOvertimeHours { get; set; }
         public decimal CurrentSSS { get; set; }

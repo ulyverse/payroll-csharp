@@ -52,7 +52,8 @@ namespace WinFormGUI
             else
             {
                 if (currentEmployee == null)
-                    currentEmployee = new Employee();
+                    currentEmployee = new Employee() { IsActive = true };
+
 
                 currentEmployee.FirstName = txtFirstName.Text;
                 currentEmployee.LastName = txtLastName.Text;
@@ -67,6 +68,7 @@ namespace WinFormGUI
                 currentEmployee.PagIbig = pagIbig;
                 currentEmployee.SSS = sss;
                 currentEmployee.PhilHealth = philHealth;
+
 
                 var result = MessageBoxPrompt.Save();
 
@@ -108,7 +110,8 @@ namespace WinFormGUI
                 txtFirstName.Text = currentEmployee.FirstName;
                 txtLastName.Text = currentEmployee.LastName;
                 dateBirthdate.Value = currentEmployee.Birthdate.ToDateTime(TimeOnly.MinValue);
-                cmbDepartment.SelectedValue = currentEmployee.DepartmentID;
+                if (currentEmployee.DepartmentID != null)
+                    cmbDepartment.SelectedValue = currentEmployee.DepartmentID;
                 cmbRoles.SelectedValue = currentEmployee.RoleID;
                 txtUsername.Text = currentEmployee.Username;
                 txtPassword.Text = currentEmployee.Password;

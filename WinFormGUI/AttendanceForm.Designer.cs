@@ -56,9 +56,9 @@
             pnlAttendance.BackColor = Color.White;
             pnlAttendance.BorderStyle = BorderStyle.FixedSingle;
             pnlAttendance.FlowDirection = FlowDirection.TopDown;
-            pnlAttendance.Location = new Point(16, 149);
+            pnlAttendance.Location = new Point(16, 137);
             pnlAttendance.Name = "pnlAttendance";
-            pnlAttendance.Size = new Size(1040, 255);
+            pnlAttendance.Size = new Size(1226, 300);
             pnlAttendance.TabIndex = 0;
             pnlAttendance.WrapContents = false;
             // 
@@ -66,9 +66,9 @@
             // 
             lblEmployeeName.AutoSize = true;
             lblEmployeeName.Font = new Font("Verdana", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEmployeeName.Location = new Point(258, 20);
+            lblEmployeeName.Location = new Point(317, 20);
             lblEmployeeName.Name = "lblEmployeeName";
-            lblEmployeeName.Size = new Size(303, 35);
+            lblEmployeeName.Size = new Size(385, 45);
             lblEmployeeName.TabIndex = 2;
             lblEmployeeName.Text = "EMPLOYEE_NAME";
             // 
@@ -76,9 +76,9 @@
             // 
             lblMorningTimein.AutoSize = true;
             lblMorningTimein.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblMorningTimein.Location = new Point(258, 120);
+            lblMorningTimein.Location = new Point(319, 106);
             lblMorningTimein.Name = "lblMorningTimein";
-            lblMorningTimein.Size = new Size(69, 18);
+            lblMorningTimein.Size = new Size(87, 25);
             lblMorningTimein.TabIndex = 3;
             lblMorningTimein.Text = "Time in";
             // 
@@ -86,9 +86,9 @@
             // 
             lblMorningTimeout.AutoSize = true;
             lblMorningTimeout.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblMorningTimeout.Location = new Point(389, 120);
+            lblMorningTimeout.Location = new Point(470, 105);
             lblMorningTimeout.Name = "lblMorningTimeout";
-            lblMorningTimeout.Size = new Size(81, 18);
+            lblMorningTimeout.Size = new Size(101, 25);
             lblMorningTimeout.TabIndex = 4;
             lblMorningTimeout.Text = "Time out";
             // 
@@ -96,9 +96,9 @@
             // 
             lblAfternoonTimein.AutoSize = true;
             lblAfternoonTimein.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblAfternoonTimein.Location = new Point(520, 120);
+            lblAfternoonTimein.Location = new Point(620, 105);
             lblAfternoonTimein.Name = "lblAfternoonTimein";
-            lblAfternoonTimein.Size = new Size(69, 18);
+            lblAfternoonTimein.Size = new Size(87, 25);
             lblAfternoonTimein.TabIndex = 5;
             lblAfternoonTimein.Text = "Time in";
             // 
@@ -106,9 +106,9 @@
             // 
             lblAfternoonTimeout.AutoSize = true;
             lblAfternoonTimeout.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblAfternoonTimeout.Location = new Point(648, 120);
+            lblAfternoonTimeout.Location = new Point(768, 105);
             lblAfternoonTimeout.Name = "lblAfternoonTimeout";
-            lblAfternoonTimeout.Size = new Size(81, 18);
+            lblAfternoonTimeout.Size = new Size(101, 25);
             lblAfternoonTimeout.TabIndex = 6;
             lblAfternoonTimeout.Text = "Time out";
             // 
@@ -116,9 +116,9 @@
             // 
             lblOvertimeTimein.AutoSize = true;
             lblOvertimeTimein.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblOvertimeTimein.Location = new Point(780, 120);
+            lblOvertimeTimein.Location = new Point(918, 105);
             lblOvertimeTimein.Name = "lblOvertimeTimein";
-            lblOvertimeTimein.Size = new Size(69, 18);
+            lblOvertimeTimein.Size = new Size(87, 25);
             lblOvertimeTimein.TabIndex = 7;
             lblOvertimeTimein.Text = "Time in";
             // 
@@ -126,15 +126,15 @@
             // 
             lblOvertimeTimeout.AutoSize = true;
             lblOvertimeTimeout.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblOvertimeTimeout.Location = new Point(908, 120);
+            lblOvertimeTimeout.Location = new Point(1069, 105);
             lblOvertimeTimeout.Name = "lblOvertimeTimeout";
-            lblOvertimeTimeout.Size = new Size(81, 18);
+            lblOvertimeTimeout.Size = new Size(101, 25);
             lblOvertimeTimeout.TabIndex = 8;
             lblOvertimeTimeout.Text = "Time out";
             // 
             // btnCalculatePay
             // 
-            btnCalculatePay.Location = new Point(908, 418);
+            btnCalculatePay.Location = new Point(1088, 445);
             btnCalculatePay.Name = "btnCalculatePay";
             btnCalculatePay.Size = new Size(148, 40);
             btnCalculatePay.TabIndex = 9;
@@ -145,36 +145,36 @@
             // lblNormalWorkingHours
             // 
             lblNormalWorkingHours.AutoSize = true;
-            lblNormalWorkingHours.Location = new Point(190, 429);
+            lblNormalWorkingHours.Location = new Point(246, 453);
             lblNormalWorkingHours.Name = "lblNormalWorkingHours";
-            lblNormalWorkingHours.Size = new Size(198, 18);
+            lblNormalWorkingHours.Size = new Size(160, 25);
             lblNormalWorkingHours.TabIndex = 10;
-            lblNormalWorkingHours.Text = "Normal Working Hours:";
+            lblNormalWorkingHours.Text = "Normal Hours:";
             // 
             // lblOvertimeHours
             // 
             lblOvertimeHours.AutoSize = true;
-            lblOvertimeHours.Location = new Point(444, 429);
+            lblOvertimeHours.Location = new Point(514, 453);
             lblOvertimeHours.Name = "lblOvertimeHours";
-            lblOvertimeHours.Size = new Size(90, 18);
+            lblOvertimeHours.Size = new Size(115, 25);
             lblOvertimeHours.TabIndex = 11;
             lblOvertimeHours.Text = "Overtime:";
             // 
             // lblGrossPay
             // 
             lblGrossPay.AutoSize = true;
-            lblGrossPay.Location = new Point(646, 429);
+            lblGrossPay.Location = new Point(825, 453);
             lblGrossPay.Name = "lblGrossPay";
-            lblGrossPay.Size = new Size(96, 18);
+            lblGrossPay.Size = new Size(121, 25);
             lblGrossPay.TabIndex = 12;
             lblGrossPay.Text = "Gross Pay:";
             // 
             // lblRate
             // 
             lblRate.AutoSize = true;
-            lblRate.Location = new Point(53, 429);
+            lblRate.Location = new Point(33, 453);
             lblRate.Name = "lblRate";
-            lblRate.Size = new Size(53, 18);
+            lblRate.Size = new Size(67, 25);
             lblRate.TabIndex = 13;
             lblRate.Text = "Rate:";
             // 
@@ -182,9 +182,9 @@
             // 
             lblMorning.AutoSize = true;
             lblMorning.Font = new Font("Verdana", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblMorning.Location = new Point(258, 88);
+            lblMorning.Location = new Point(319, 73);
             lblMorning.Name = "lblMorning";
-            lblMorning.Size = new Size(130, 25);
+            lblMorning.Size = new Size(167, 32);
             lblMorning.TabIndex = 14;
             lblMorning.Text = "MORNING";
             // 
@@ -192,9 +192,9 @@
             // 
             lblAfternoon.AutoSize = true;
             lblAfternoon.Font = new Font("Verdana", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAfternoon.Location = new Point(520, 88);
+            lblAfternoon.Location = new Point(620, 73);
             lblAfternoon.Name = "lblAfternoon";
-            lblAfternoon.Size = new Size(158, 25);
+            lblAfternoon.Size = new Size(202, 32);
             lblAfternoon.TabIndex = 15;
             lblAfternoon.Text = "AFTERNOON";
             // 
@@ -202,15 +202,15 @@
             // 
             lblOvertime.AutoSize = true;
             lblOvertime.Font = new Font("Verdana", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblOvertime.Location = new Point(780, 88);
+            lblOvertime.Location = new Point(918, 73);
             lblOvertime.Name = "lblOvertime";
-            lblOvertime.Size = new Size(135, 25);
+            lblOvertime.Size = new Size(174, 32);
             lblOvertime.TabIndex = 16;
             lblOvertime.Text = "OVERTIME";
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(908, 464);
+            btnSave.Location = new Point(1088, 491);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(148, 40);
             btnSave.TabIndex = 17;
@@ -221,33 +221,33 @@
             // lblBalance
             // 
             lblBalance.AutoSize = true;
-            lblBalance.Location = new Point(444, 475);
+            lblBalance.Location = new Point(514, 499);
             lblBalance.Name = "lblBalance";
-            lblBalance.Size = new Size(79, 18);
+            lblBalance.Size = new Size(100, 25);
             lblBalance.TabIndex = 18;
             lblBalance.Text = "Balance:";
             // 
             // lblAmount
             // 
             lblAmount.AutoSize = true;
-            lblAmount.Location = new Point(646, 475);
+            lblAmount.Location = new Point(827, 499);
             lblAmount.Name = "lblAmount";
-            lblAmount.Size = new Size(78, 18);
+            lblAmount.Size = new Size(100, 25);
             lblAmount.TabIndex = 19;
             lblAmount.Text = "Amount:";
             // 
             // txtAmount
             // 
-            txtAmount.Location = new Point(730, 472);
+            txtAmount.Location = new Point(933, 496);
             txtAmount.Name = "txtAmount";
-            txtAmount.Size = new Size(117, 27);
+            txtAmount.Size = new Size(117, 32);
             txtAmount.TabIndex = 20;
             // 
             // AttendanceForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 18F);
+            AutoScaleDimensions = new SizeF(13F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1072, 518);
+            ClientSize = new Size(1254, 543);
             Controls.Add(txtAmount);
             Controls.Add(lblAmount);
             Controls.Add(lblBalance);

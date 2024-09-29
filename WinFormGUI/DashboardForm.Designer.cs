@@ -41,6 +41,7 @@
             btnEditEmployee = new Button();
             btnDeleteEmployee = new Button();
             pagePayroll = new TabPage();
+            btnDeletePayroll = new Button();
             dgvPayroll = new DataGridView();
             btnCreatePayroll = new Button();
             tabControlDashboard = new TabControl();
@@ -69,7 +70,7 @@
             pageEmployee.Location = new Point(4, 27);
             pageEmployee.Name = "pageEmployee";
             pageEmployee.Padding = new Padding(3);
-            pageEmployee.Size = new Size(1376, 650);
+            pageEmployee.Size = new Size(1376, 662);
             pageEmployee.TabIndex = 1;
             pageEmployee.Text = "Employees";
             pageEmployee.UseVisualStyleBackColor = true;
@@ -79,9 +80,9 @@
             mainPanel.BackColor = Color.Transparent;
             mainPanel.Controls.Add(dgvEmployees);
             mainPanel.Dock = DockStyle.Fill;
-            mainPanel.Location = new Point(3, 38);
+            mainPanel.Location = new Point(3, 43);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1370, 574);
+            mainPanel.Size = new Size(1370, 576);
             mainPanel.TabIndex = 6;
             // 
             // dgvEmployees
@@ -96,9 +97,11 @@
             dgvEmployees.MultiSelect = false;
             dgvEmployees.Name = "dgvEmployees";
             dgvEmployees.ReadOnly = true;
+            dgvEmployees.RowHeadersWidth = 51;
             dgvEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEmployees.Size = new Size(1370, 574);
+            dgvEmployees.Size = new Size(1370, 576);
             dgvEmployees.TabIndex = 4;
+            dgvEmployees.CellDoubleClick += dgvEmployees_CellDoubleClick;
             // 
             // topPanel
             // 
@@ -108,13 +111,13 @@
             topPanel.Dock = DockStyle.Top;
             topPanel.Location = new Point(3, 3);
             topPanel.Name = "topPanel";
-            topPanel.Size = new Size(1370, 35);
+            topPanel.Size = new Size(1370, 40);
             topPanel.TabIndex = 5;
             // 
             // lblFirstname
             // 
             lblFirstname.AutoSize = true;
-            lblFirstname.Location = new Point(136, 8);
+            lblFirstname.Location = new Point(136, 5);
             lblFirstname.Name = "lblFirstname";
             lblFirstname.Size = new Size(62, 18);
             lblFirstname.TabIndex = 2;
@@ -124,7 +127,7 @@
             // 
             lblSearch.AutoSize = true;
             lblSearch.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSearch.Location = new Point(15, 8);
+            lblSearch.Location = new Point(15, 5);
             lblSearch.Name = "lblSearch";
             lblSearch.Size = new Size(80, 18);
             lblSearch.TabIndex = 1;
@@ -132,7 +135,7 @@
             // 
             // txtName
             // 
-            txtName.Location = new Point(204, 6);
+            txtName.Location = new Point(221, 4);
             txtName.Name = "txtName";
             txtName.Size = new Size(229, 27);
             txtName.TabIndex = 0;
@@ -145,15 +148,15 @@
             bottomPanel.Controls.Add(btnEditEmployee);
             bottomPanel.Controls.Add(btnDeleteEmployee);
             bottomPanel.Dock = DockStyle.Bottom;
-            bottomPanel.Location = new Point(3, 612);
+            bottomPanel.Location = new Point(3, 619);
             bottomPanel.Name = "bottomPanel";
-            bottomPanel.Size = new Size(1370, 35);
+            bottomPanel.Size = new Size(1370, 40);
             bottomPanel.TabIndex = 5;
             // 
             // btnAddBalance
             // 
             btnAddBalance.Font = new Font("Verdana", 10F);
-            btnAddBalance.Location = new Point(196, 2);
+            btnAddBalance.Location = new Point(174, 5);
             btnAddBalance.Name = "btnAddBalance";
             btnAddBalance.Size = new Size(229, 31);
             btnAddBalance.TabIndex = 1;
@@ -164,7 +167,7 @@
             // btnAddEmployee
             // 
             btnAddEmployee.Font = new Font("Verdana", 10F);
-            btnAddEmployee.Location = new Point(446, 2);
+            btnAddEmployee.Location = new Point(424, 5);
             btnAddEmployee.Name = "btnAddEmployee";
             btnAddEmployee.Size = new Size(229, 31);
             btnAddEmployee.TabIndex = 2;
@@ -175,7 +178,7 @@
             // btnEditEmployee
             // 
             btnEditEmployee.Font = new Font("Verdana", 10F);
-            btnEditEmployee.Location = new Point(696, 2);
+            btnEditEmployee.Location = new Point(674, 5);
             btnEditEmployee.Name = "btnEditEmployee";
             btnEditEmployee.Size = new Size(229, 31);
             btnEditEmployee.TabIndex = 3;
@@ -187,9 +190,9 @@
             // 
             btnDeleteEmployee.Font = new Font("Verdana", 10F);
             btnDeleteEmployee.ForeColor = Color.Red;
-            btnDeleteEmployee.Location = new Point(946, 2);
+            btnDeleteEmployee.Location = new Point(924, 5);
             btnDeleteEmployee.Name = "btnDeleteEmployee";
-            btnDeleteEmployee.Size = new Size(229, 31);
+            btnDeleteEmployee.Size = new Size(272, 31);
             btnDeleteEmployee.TabIndex = 4;
             btnDeleteEmployee.Text = "Delete Selected Employee";
             btnDeleteEmployee.UseVisualStyleBackColor = true;
@@ -197,15 +200,28 @@
             // 
             // pagePayroll
             // 
+            pagePayroll.Controls.Add(btnDeletePayroll);
             pagePayroll.Controls.Add(dgvPayroll);
             pagePayroll.Controls.Add(btnCreatePayroll);
             pagePayroll.Location = new Point(4, 27);
             pagePayroll.Name = "pagePayroll";
             pagePayroll.Padding = new Padding(3);
-            pagePayroll.Size = new Size(1376, 650);
+            pagePayroll.Size = new Size(1376, 662);
             pagePayroll.TabIndex = 0;
             pagePayroll.Text = "Payroll";
             pagePayroll.UseVisualStyleBackColor = true;
+            pagePayroll.Click += pagePayroll_Click;
+            // 
+            // btnDeletePayroll
+            // 
+            btnDeletePayroll.ForeColor = Color.Red;
+            btnDeletePayroll.Location = new Point(244, 17);
+            btnDeletePayroll.Name = "btnDeletePayroll";
+            btnDeletePayroll.Size = new Size(201, 40);
+            btnDeletePayroll.TabIndex = 2;
+            btnDeletePayroll.Text = "Delete Payroll";
+            btnDeletePayroll.UseVisualStyleBackColor = true;
+            btnDeletePayroll.Click += btnDeletePayroll_Click;
             // 
             // dgvPayroll
             // 
@@ -217,8 +233,9 @@
             dgvPayroll.MultiSelect = false;
             dgvPayroll.Name = "dgvPayroll";
             dgvPayroll.ReadOnly = true;
+            dgvPayroll.RowHeadersWidth = 51;
             dgvPayroll.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPayroll.Size = new Size(626, 541);
+            dgvPayroll.Size = new Size(626, 560);
             dgvPayroll.TabIndex = 1;
             dgvPayroll.CellDoubleClick += dgvPayroll_CellDoubleClick;
             // 
@@ -241,7 +258,7 @@
             tabControlDashboard.Location = new Point(0, 0);
             tabControlDashboard.Name = "tabControlDashboard";
             tabControlDashboard.SelectedIndex = 0;
-            tabControlDashboard.Size = new Size(1384, 681);
+            tabControlDashboard.Size = new Size(1384, 693);
             tabControlDashboard.TabIndex = 1;
             // 
             // pageDepartments
@@ -254,7 +271,7 @@
             pageDepartments.Location = new Point(4, 24);
             pageDepartments.Name = "pageDepartments";
             pageDepartments.Padding = new Padding(3);
-            pageDepartments.Size = new Size(1376, 653);
+            pageDepartments.Size = new Size(1376, 665);
             pageDepartments.TabIndex = 2;
             pageDepartments.Text = "Departments";
             pageDepartments.UseVisualStyleBackColor = true;
@@ -302,14 +319,14 @@
             listDepartments.ItemHeight = 18;
             listDepartments.Location = new Point(8, 6);
             listDepartments.Name = "listDepartments";
-            listDepartments.Size = new Size(235, 220);
+            listDepartments.Size = new Size(235, 202);
             listDepartments.TabIndex = 0;
             // 
             // DashboardForm
             // 
             AutoScaleDimensions = new SizeF(10F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1384, 681);
+            ClientSize = new Size(1384, 693);
             Controls.Add(tabControlDashboard);
             Font = new Font("Verdana", 12F);
             Margin = new Padding(4);
@@ -355,5 +372,6 @@
         private Label lblFirstname;
         private Label lblSearch;
         private DataGridView dgvPayroll;
+        private Button btnDeletePayroll;
     }
 }

@@ -18,7 +18,23 @@ public class EmployeeData : SqliteDataAccess<Employee>
     public static List<Employee> GetAllDetailed()
     {
         List<Employee> employeeList = GetAll();
+        GetEmployeeDetails(employeeList);
 
+        return employeeList;
+    }
+
+    public static List<Employee> GetAllActiveEmployees()
+    {
+        return GetAll().Where(x => x.IsActive).ToList();
+    }
+
+    public static List<Employee> GetAllActiveEmployeesDetailed()
+    {
+        return GetAllDetailed().Where(x => x.IsActive).ToList();
+    }
+
+    private static void GetEmployeeDetails(List<Employee> employeeList)
+    {
         List<Role> roleList = RoleData.GetAll();
         List<Department> departmentList = DepartmentData.GetAll();
 
@@ -27,7 +43,9 @@ public class EmployeeData : SqliteDataAccess<Employee>
             employee.Department = departmentList.Where(d => d.ID == employee.DepartmentID).FirstOrDefault();
             employee.Role = roleList.Where(r => r.ID == employee.RoleID).FirstOrDefault();
         }
-
-        return employeeList;
+    }
+    public static int SetIsActive(int id, bool isActive = false)
+    {
+        return Execute("UPDATE Employees SET IsActive = @isActive WHERE ID = @id", new { isActive, id });
     }
 }

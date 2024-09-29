@@ -97,6 +97,7 @@ namespace WinFormGUI
         private void btnEditEmployee_Click(object sender, EventArgs e)
         {
             int rowIdx = dgvEmployees.SelectedCells[0].RowIndex;
+            if (rowIdx == -1) return;
             int id = GetEmployeeIdDGV(rowIdx);
             OpenEmployeeForm(id);
         }
@@ -129,9 +130,11 @@ namespace WinFormGUI
 
         private void btnDeleteEmployee_Click(object sender, EventArgs e)
         {
+            int rowIdx = dgvEmployees.SelectedCells[0].RowIndex;
+            if (rowIdx == -1) return;
+
             if (MessageBoxPrompt.Delete() == DialogResult.Yes)
             {
-                int rowIdx = dgvEmployees.SelectedCells[0].RowIndex;
                 int id = (int)dgvEmployees.Rows[rowIdx].Cells[0].Value;
                 EmployeeData.SetIsActive(id, false);
                 PopulateEmployeesDGV();
@@ -142,6 +145,7 @@ namespace WinFormGUI
         private void btnAddBalance_Click(object sender, EventArgs e)
         {
             int rowIdx = dgvEmployees.SelectedCells[0].RowIndex;
+            if (rowIdx == -1) return;
             int id = (int)dgvEmployees.Rows[rowIdx].Cells[0].Value;
             Employee? employee = EmployeeData.FindById(id);
             if (employee == null)
@@ -242,6 +246,10 @@ namespace WinFormGUI
 
         private void btnDeletePayroll_Click(object sender, EventArgs e)
         {
+            int rowCount = dgvPayroll.Rows.Count;
+
+            if (rowCount == 0) return;
+
             int payrollId = (int)dgvPayroll.SelectedRows[0].Cells[0].Value;
             if (MessageBoxPrompt.Delete("payroll") == DialogResult.Yes)
             {

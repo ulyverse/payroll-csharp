@@ -268,10 +268,10 @@
             pageDepartments.Controls.Add(btnRemoveDepartment);
             pageDepartments.Controls.Add(btnAddDepartment);
             pageDepartments.Controls.Add(listDepartments);
-            pageDepartments.Location = new Point(4, 24);
+            pageDepartments.Location = new Point(4, 27);
             pageDepartments.Name = "pageDepartments";
             pageDepartments.Padding = new Padding(3);
-            pageDepartments.Size = new Size(1376, 665);
+            pageDepartments.Size = new Size(1376, 662);
             pageDepartments.TabIndex = 2;
             pageDepartments.Text = "Departments";
             pageDepartments.UseVisualStyleBackColor = true;
